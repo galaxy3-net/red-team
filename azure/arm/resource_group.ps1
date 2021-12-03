@@ -1,1 +1,1 @@
-New-AzResourceGroup =Name "RedTeam" -Location eastUS
+New-AzResourceGroup -Name "RedTeam" -Location eastUS
