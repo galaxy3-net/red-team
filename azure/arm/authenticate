@@ -2,6 +2,7 @@
 
 
 if [[ -z "${1}" ]]
+then
     read -prompt 'Tenant ID' TenantID
 else
     TenantID = ${1}
