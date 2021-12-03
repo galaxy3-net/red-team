@@ -1,0 +1,1 @@
+New-AzResourceGroupDeployment -ResourceGroupName 'RedTeam' -TemplateUri https://raw.githubusercontent.com/galaxy3-net/red-team/krk/azure/arm/templates/RedTeamSG.json -TemplateParameterUri https://raw.githubusercontent.com/galaxy3-net/red-team/krk/azure/arm/templates/RedTeamSG_parameters.json
