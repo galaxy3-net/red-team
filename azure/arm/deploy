@@ -1,29 +1,67 @@
 #!/bin/bash
 
-case $1 in
+export GITHUB_ROOT='https://raw.githubusercontent.com/galaxy3-net/red-team/krk/azure/arm/'
+
+function authenticate () {
+  bash -c "$(curl -s ${GITHUB_ROOT}authenticate)"
+}
+
+function day1() {
+    redteam
+    redteamsg
+    nsgrules
+    net1
+}
+
+function net1() {
+    pwsh -Command "iwr ${GITHUB_ROOT}net1.ps1 | iex"
+}
+
+function nsgrules() {
+    pwsh -Command "iwr ${GITHUB_ROOT}nsgrules.ps1 | iex"
+}
+
+function redteam() {
+    pwsh -Command "iwr ${GITHUB_ROOT}resource_group.ps1 -UseBasicParsing | iex"
+}
+
+function redteamsg() {
+    pwsh -Command "iwr ${GITHUB_ROOT}redteamsg.ps1 | iex"
+}
+
+function setup() {
+    bash -c "$(curl -s ${GITHUB_ROOT}setup)"
+}
+case ""${1}"" in
 
   authenticate)
-    bash -c "$(curl -s https://raw.githubusercontent.com/galaxy3-net/red-team/krk/azure/arm/authenticate)"
+    authenticate
     exit 0
     ;;
 
-  nsgrules)  pwsh -Command "iwr https://raw.githubusercontent.com/galaxy3-net/red-team/krk/azure/arm/nsgrules.ps1 | iex"
+  day1)
+  nsgrules)
+    nsgrules
     exit 0
     ;;
 
-  net1)  pwsh -Command "iwr https://raw.githubusercontent.com/galaxy3-net/red-team/krk/azure/arm/net1.ps1 | iex"
+  net1)
+    net1
     exit 0
     ;;
 
-  redteam) pwsh -Command "iwr https://raw.githubusercontent.com/galaxy3-net/red-team/krk/azure/arm/resource_group.ps1 -UseBasicParsing | iex"
+  redteam)
+    redteam
     exit 0
     ;;
 
-  redteamsg)  pwsh -Command "iwr https://raw.githubusercontent.com/galaxy3-net/red-team/krk/azure/arm/redteamsg.ps1 | iex"
+  redteamsg)
+    redteamsg
     exit 0
     ;;
 
-  setup) bash -c "$(curl -s https://raw.githubusercontent.com/galaxy3-net/red-team/krk/azure/arm/setup)"
+  setup)
+    setup
     exit 0
     ;;
 
