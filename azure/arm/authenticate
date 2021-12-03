@@ -3,7 +3,7 @@
 
 if [[ -z "${1}" ]]
 then
-    read -prompt 'Tenant ID' TenantID
+    read -p 'Tenant ID' TenantID
 else
     TenantID = ${1}
 fi
