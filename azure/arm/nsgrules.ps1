@@ -17,6 +17,7 @@ Get-AzNetworkSecurityGroup -Name RedTeamSG -ResourceGroupName RedTeam |
     Deny -Protocol * -Direction Inbound -Priority 4096 -SourceAddressPrefix Internet `
     -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange * |
         Set-AzNetworkSecurityGroup
+#>
 
 Get-AzNetworkSecurityGroup -Name RedTeamSG -ResourceGroupName RedTeam |
         Add-AzNetworkSecurityRuleConfig -Name allow-rdp -Description "Allow RDP" -Access `
