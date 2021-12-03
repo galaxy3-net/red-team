@@ -20,7 +20,7 @@ Get-AzNetworkSecurityGroup -Name RedTeamSG -ResourceGroupName RedTeam |
 
 Get-AzNetworkSecurityGroup -Name RedTeamSG -ResourceGroupName RedTeam |
         Add-AzNetworkSecurityRuleConfig -Name rdp-rule -Description "Allow RDP" -Access `
-    Allow -Protocol Tcp -Direction Inbound -Priority 4097 -SourceAddressPrefix "10.10.10.10/32" -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389 |
+    Allow -Protocol Tcp -Direction Inbound -Priority 4097 -SourceAddressPrefix Internet * -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389 |
         Set-AzNetworkSecurityGroup
 
  #>
