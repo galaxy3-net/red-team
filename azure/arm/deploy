@@ -1,5 +1,8 @@
 #!/bin/bash
 
+function deny_all_inbound () {
+  pwsh -Command
+}
 case $1 in
 
   authenticate)
