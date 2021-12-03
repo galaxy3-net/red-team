@@ -17,7 +17,7 @@ Instructions
 3. Install Powershell
 > Run
 > 
->bash -c "$(curl -s https://raw.githubusercontent.com/galaxy3-net/red-team/krk/azure/arm/setup")
+>bash -c "$(curl -s https://raw.githubusercontent.com/galaxy3-net/red-team/krk/azure/arm/setup)"
 
 .
 > Run
