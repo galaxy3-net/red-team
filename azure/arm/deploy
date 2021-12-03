@@ -29,6 +29,12 @@ function redteamsg() {
     pwsh -Command "iwr ${GITHUB_ROOT}redteamsg.ps1 | iex"
 }
 
+function refresh() {
+    [ -e ./deploy ] && rm ./deploy
+    wget --no-cache ${GITHUB_ROOT}deploy
+    chmod u+x ./deploy
+}
+
 function setup() {
     bash -c "$(curl -s ${GITHUB_ROOT}setup)"
 }
@@ -40,6 +46,10 @@ case ""${1}"" in
     ;;
 
   day1)
+    day1
+    exit 0
+    ;;
+
   nsgrules)
     nsgrules
     exit 0
@@ -57,6 +67,11 @@ case ""${1}"" in
 
   redteamsg)
     redteamsg
+    exit 0
+    ;;
+
+  refresh)
+    refresh
     exit 0
     ;;
 
