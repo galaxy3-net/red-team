@@ -2,7 +2,7 @@
 
 case $1 in
 
-  net1)  pwsh -Command "iwr https://raw.githubusercontent.com/galaxy3-net/red-team/krk/azure/arm/net1.json | iex"
+  net1)  pwsh -Command "iwr https://raw.githubusercontent.com/galaxy3-net/red-team/krk/azure/arm/net1.ps1 | iex"
     exit 0
     ;;
 
