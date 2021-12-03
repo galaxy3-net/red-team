@@ -1,0 +1,1 @@
+New-AzResourceGroup =Name "RedTeam" -Location eastUS
