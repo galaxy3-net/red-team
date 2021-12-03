@@ -13,7 +13,7 @@
 # https://docs.microsoft.com/en-us/powershell/module/az.network/new-aznetworksecurityruleconfig?view=azps-6.6.0
 
 Get-AzNetworkSecurityGroup -Name RedTeamSG -ResourceGroupName RedTeam |
-        Add-AzNetworkSecurityRuleConfig -Name rdp-rule -Description "Deny All" -Access `
+        Add-AzNetworkSecurityRuleConfig -Name deny-all -Description "Deny All" -Access `
     Deny -Protocol * -Direction Inbound -Priority 4096 -SourceAddressPrefix Internet `
     -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange * |
         Set-AzNetworkSecurityGroup
