@@ -1,0 +1,13 @@
+#!/bin/bash
+
+case $1 in
+
+  net1)  pwsh -Command "iwr https://raw.githubusercontent.com/galaxy3-net/red-team/krk/azure/arm/net1.json | iex"
+    exit 0
+    ;;
+
+  *) echo "${1} is not a valid subcommand"
+    exit 1
+    ;;
+esac
+
