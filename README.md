@@ -24,7 +24,10 @@ Instructions
 > 
 > iwr https://raw.githubusercontent.com/galaxy3-net/red-team/krk/azure/arm/resource_group.ps1 -UseBasicParsing | iex
 
-4. Connect the Poershell Session to the Azure Account
+4. Connect the Powershell Session to the Azure Account
+> Run
+>
+>bash -c "$(curl -s https://raw.githubusercontent.com/galaxy3-net/red-team/krk/azure/arm/authenticate)"
 
 
 ### Install Powershell on Ubuntu 
