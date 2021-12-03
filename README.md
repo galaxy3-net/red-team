@@ -13,7 +13,10 @@ Instructions
     1. After logging into the AWS console.
     2. GoTo: Azure Active Directory -> Overview
     3. Copy the Tenant ID, store it in a secure place
-    
+
+wget https://raw.githubusercontent.com/galaxy3-net/red-team/krk/azure/arm/deploy
+chmod u+x deploy
+
 3. Install Powershell
 > Run
 > 
