@@ -38,7 +38,7 @@ function refresh() {
 function setup() {
     bash -c "$(curl -s ${GITHUB_ROOT}setup)"
 }
-case ""${1}"" in
+case "${1}" in
 
   authenticate)
     authenticate
