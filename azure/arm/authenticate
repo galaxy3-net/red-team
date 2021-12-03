@@ -1,0 +1,12 @@
+#!/bin/bash
+
+
+if [[ -z "${1}" ]]
+    read -prompt 'Tenant ID' TenantID
+else
+    TenantID = ${1}
+fi
+
+printf "TenantID ${TenantID}"
+
+pwsh -Command "Connect-AzAccount -TenantID ${TenantID}"
