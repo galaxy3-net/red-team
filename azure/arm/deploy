@@ -15,7 +15,7 @@ case $1 in
     exit 0
     ;;
 
-  redteamsg)  pwsh -Command "iwr https://raw.githubusercontent.com/galaxy3-net/red-team/krk/azure/arm/redteam.ps1 | iex"
+  redteamsg)  pwsh -Command "iwr https://raw.githubusercontent.com/galaxy3-net/red-team/krk/azure/arm/redteamsg.ps1 | iex"
     exit 0
     ;;
 
