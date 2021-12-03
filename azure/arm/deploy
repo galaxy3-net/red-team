@@ -1,12 +1,13 @@
 #!/bin/bash
 
-function deny_all_inbound () {
-  pwsh -Command
-}
 case $1 in
 
   authenticate)
     bash -c "$(curl -s https://raw.githubusercontent.com/galaxy3-net/red-team/krk/azure/arm/authenticate)"
+    exit 0
+    ;;
+
+  nsgrules)  pwsh -Command "iwr https://raw.githubusercontent.com/galaxy3-net/red-team/krk/azure/arm/nsgrules.ps1 | iex"
     exit 0
     ;;
 

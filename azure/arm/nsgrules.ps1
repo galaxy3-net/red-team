@@ -12,9 +12,16 @@
 
 # https://docs.microsoft.com/en-us/powershell/module/az.network/new-aznetworksecurityruleconfig?view=azps-6.6.0
 
-Get-AzNetworkSecurityGroup -Name ReadTeamSG -ResourceGroupName ReadTeam |
+Get-AzNetworkSecurityGroup -Name RedTeamSG -ResourceGroupName RedTeam |
+        Add-AzNetworkSecurityRuleConfig -Name rdp-rule -Description "Deny All" -Access `
+    Deny -Protocol * -Direction Inbound -Priority 4096 -SourceAddressPrefix Internet `
+    -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange * |
+        Set-AzNetworkSecurityGroup
+
+Get-AzNetworkSecurityGroup -Name RedTeamSG -ResourceGroupName RedTeam |
         Add-AzNetworkSecurityRuleConfig -Name rdp-rule -Description "Allow RDP" -Access `
-    Allow -Protocol Tcp -Direction Inbound -Priority 100 -SourceAddressPrefix Internet `
+    Allow -Protocol Tcp -Direction Inbound -Priority 4097 -SourceAddressPrefix Internet 10.10.10.10
     -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389 |
         Set-AzNetworkSecurityGroup
+
  #>
