@@ -1,4 +1,4 @@
-$ScriptName stub.ps1
+$ScriptName = "stub.ps1"
 $ScriptName
 
-$PUBLIC_IP
+$P = stub.ps1UBLIC_IP
