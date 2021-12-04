@@ -3,6 +3,7 @@
 export PUBLIC_IP=$(dig +short myip.opendns.com @resolver1.opendns.com)
 export PUBLIC_KEY=$(cat ~/.ssh/jumpbox.pub)
 export ResourceGroupName="RedTeam"
+createJSONTEmplateFile
 
 export GITHUB_ROOT='https://raw.githubusercontent.com/galaxy3-net/red-team/krk/azure/arm/'
 
