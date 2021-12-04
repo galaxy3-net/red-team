@@ -1,1 +1,1 @@
-$args[0]
+$PUBLIC_IP

@@ -49,9 +49,10 @@ function setup() {
 
 function stub() {
     #pwsh -Command "iwr ${GITHUB_ROOT}stub.ps1 | iex \"${PUBLIC_IP}\""
-    export scriptPath="${GITHUB_ROOT}stub"
+    export URL="${GITHUB_ROOT}stub"
+
     export ARGS="aaa"
-    pwsh "\$scriptPath = ((new-object net.webclient).DownloadString(${scriptPath}); \$args = $ARGS; iex $scriptPath $args"
+    pwsh "\$PUBLIC_IP=${PUBLIC_IP}}; iwr ${URL}) | iex"
 }
 case "${1}" in
 
