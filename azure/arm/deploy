@@ -2,6 +2,7 @@
 
 export PUBLIC_IP=$(dig +short myip.opendns.com @resolver1.opendns.com)
 export PUBLIC_KEY=$(cat ~/.ssh/jumpbox.pub)
+export ResourceGroupName="RedTeam"
 
 export GITHUB_ROOT='https://raw.githubusercontent.com/galaxy3-net/red-team/krk/azure/arm/'
 
@@ -18,28 +19,10 @@ function day1() {
 }
 
 function iex() {
+    export IEX_MODULE="${1}"
     pwsh -Command "iwr ${GITHUB_ROOT}${1}.ps1 | iex"
     #pwsh -Command "\$PUBLIC_IP=\"${PUBLIC_IP}\" ; \$Command = iwr ${URL} ; iex \$Command"
 }
-#unction jumpbox() {
-#    pwsh -Command "iwr ${GITHUB_ROOT}jumpbox.ps1 | iex"
-#}
-
-#function net1() {
-#    pwsh -Command "iwr ${GITHUB_ROOT}net1.ps1 | iex"
-#}
-
-#function nsgrules() {
-#    pwsh -Command "iwr ${GITHUB_ROOT}nsgrules.ps1 | iex"
-#}
-
-#function redteam() {
-#    pwsh -Command "iwr ${GITHUB_ROOT}resource_group.ps1 -UseBasicParsing | iex"
-#}
-
-#function redteamsg() {
-#    pwsh -Command "iwr ${GITHUB_ROOT}redteamsg.ps1 | iex"
-#}
 
 function refresh() {
     [ -e ./deploy ] && rm ./deploy
@@ -50,12 +33,6 @@ function refresh() {
 function setup() {
     bash -c "$(curl -s ${GITHUB_ROOT}setup)"
 }
-
-#function stub() {
-#    export URL="${GITHUB_ROOT}stub.ps1"
-#    #pwsh -Command "\$PUBLIC_IP=\"${PUBLIC_IP}\" ; \$Command = iwr ${URL} ; iex \$Command"
-#    pwsh -Command "iwr ${GITHUB_ROOT}stub.ps1 -UseBasicParsing | iex"
-#}
 
 case "${1}" in
 
