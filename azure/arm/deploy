@@ -19,7 +19,7 @@ function createJSONTEmplateFile() {
                   --arg ip "$PUBLIC_IP/32" \
                   --arg key "$PUBLIC_KEY" \
                   --arg key1 "$PUBLIC_KEY" \
-                  '{$PUBLIC_IP: $ip, PUBLIC_KEY: $key, adminPublicKey1: $key1}' )
+                  '{"PUBLIC_IP": $ip, "PUBLIC_KEY": $key, "adminPublicKey1": $key1}' )
   echo "${JSON_STRING}" > /tmp/RedTeam_parameters.json
 #    cat <<_EOD_ > /tmp/RedTeam_parameters.json
 #{
