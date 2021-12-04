@@ -48,7 +48,8 @@ function setup() {
 }
 
 function stub() {
-    pwsh -Command "iwr ${GITHUB_ROOT}stub.ps1 | iex \"${PUBLIC_IP}\""
+    #pwsh -Command "iwr ${GITHUB_ROOT}stub.ps1 | iex \"${PUBLIC_IP}\""
+    pwsh "\$scriptPath = ((new-object net.webclient).DownloadString(${GITHUB_ROOT}setup)l $args = \"aaa\"; iex $scriptPath $args"
 }
 case "${1}" in
 
