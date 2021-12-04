@@ -1,2 +1,2 @@
-New-AzResourceGroupDeployment -ResourceGroupName 'RedTeam' -TemplateUri https://raw.githubusercontent.com/galaxy3-net/red-team/krk/azure/arm/templates/jumpbox.json -TemplateFile /tmp/combined.json
+New-AzResourceGroupDeployment -ResourceGroupName 'RedTeam' -TemplateUri https://raw.githubusercontent.com/galaxy3-net/red-team/krk/azure/arm/templates/jumpbox.json -TemplateFile /tmp/combined.json2
 #  New-AzResourceGroupDeployment -ResourceGroupName 'RedTeam' -TemplateUri https://raw.githubusercontent.com/galaxy3-net/red-team/krk/azure/arm/templates/jumpbox.json -TemplateParameterUri https://raw.githubusercontent.com/galaxy3-net/red-team/krk/azure/arm/templates/jumpbox_parameters.json -TemplateFile /tmp/ReadTeam_parameters.json
