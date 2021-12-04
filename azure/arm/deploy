@@ -28,7 +28,7 @@ function createJSONTEmplateFile() {
 #  "adminPublicKey1": "${PUBLIC_KEY}"
 #}
 #_EOD_
-
+# cat /tmp/RedTeam_parameters.json | jq '[.] | {parameters: .}' > /tmp/red2.json
 }
 function day1() {
     iex redteam
@@ -41,7 +41,9 @@ function day1() {
 function getParameters() {
     export filename="${1}_parameters.json"
     curl -o /tmp/${filename} ${GITHUB_ROOT}templates/${filename}
-    jq -s '.[0] * .[1]' /tmp/${filename} /tmp/RedTeam_parameters.json > /tmp/combined.json
+    #jq -s '.[0] * .[1]' /tmp/${filename} /tmp/RedTeam_parameters.json > /tmp/combined.json
+    cat /tmp/RedTeam_parameters.json | jq '. | {parameters}' > /tmp/red2.json
+    jq -s '.[0] * .[1]' /tmp/${filename} /tmp/red2.json > /tmp/combined.json
 }
 
 function iex() {
