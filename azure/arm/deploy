@@ -11,13 +11,23 @@ function authenticate () {
 }
 
 function createJSONTEmplateFile() {
-    cat <<_EOD_ > /tmp/ReadTeam_parameters.json
-{
-  "PUBLIC_IP": "${PUBLIC_IP}/32",
-  "PUBLIC_KEY": "${PUBLIC_KEY}"
-  "adminPublicKey1": "${PUBLIC_KEY}"
-}
-_EOD_
+  # BUCKET_NAME=testbucket
+  # OBJECT_NAME=testworkflow-2.0.1.jar
+  # TARGET_LOCATION=/opt/test/testworkflow-2.0.1.jar
+
+  JSON_STRING=$( jq -n \
+                  --arg ip "$PUBLIC_IP/32" \
+                  --arg key "$PUBLIC_KEY" \
+                  --arg key1 "$PUBLIC_KEY" \
+                  '{$PUBLIC_IP: $ip, PUBLIC_KEY: $key, adminPublicKey1: $key1}' )
+  echo "${JSON_STRING}" > /tmp/RedTeam_parameters.json
+#    cat <<_EOD_ > /tmp/RedTeam_parameters.json
+#{
+#  "PUBLIC_IP": "${PUBLIC_IP}/32",
+#  "PUBLIC_KEY": "${PUBLIC_KEY}",
+#  "adminPublicKey1": "${PUBLIC_KEY}"
+#}
+#_EOD_
 
 }
 function day1() {
