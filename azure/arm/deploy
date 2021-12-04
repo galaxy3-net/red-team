@@ -17,6 +17,9 @@ function day1() {
     jumpbox
 }
 
+function iex() {
+    pwsh -Command "iwr ${GITHUB_ROOT}${1}.ps1 | iex"
+}
 function jumpbox() {
     pwsh -Command "iwr ${GITHUB_ROOT}jumpbox.ps1 | iex"
 }
@@ -104,7 +107,7 @@ case "${1}" in
     ;;
 
   stub)
-    stub
+    iex stub
     exit 0
     ;;
 
