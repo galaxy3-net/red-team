@@ -49,7 +49,7 @@ function setup() {
 
 function stub() {
     export URL="${GITHUB_ROOT}stub.ps1"
-    pwsh -Command "\$PUBLIC_IP=test ; \$Command = iwr ${URL} ; iex \$Command"
+    pwsh -Command "\$PUBLIC_IP=\"${PUBLIC_IP}\" ; \$Command = iwr ${URL} ; iex \$Command"
 }
 
 function get_url() {
