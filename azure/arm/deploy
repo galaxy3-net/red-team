@@ -11,6 +11,11 @@ function day1() {
     redteamsg
     nsgrules
     net1
+    jumpbox
+}
+
+function jumpbox() {
+    pwsh -Command "iwr ${GITHUB_ROOT}jumpbox.ps1 | iex"
 }
 
 function net1() {
@@ -47,6 +52,11 @@ case "${1}" in
 
   day1)
     day1
+    exit 0
+    ;;
+
+  jumpbox)
+    jumpbox
     exit 0
     ;;
 

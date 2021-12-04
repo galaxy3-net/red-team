@@ -6,6 +6,9 @@ RedTeam environment.
 - [New-AzResourceGroupDeployment manpage](https://docs.microsoft.com/en-us/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-6.6.0)
 - [New-AzResourceGroup manpage](https://docs.microsoft.com/en-us/powershell/scripting/install/install-ubuntu?view=powershell-7.2)
 - [Installing Powershell on Ubuntu](https://docs.microsoft.com/en-us/powershell/scripting/install/install-ubuntu?view=powershell-7.2)
+- [Manage Network Security Groups With PowerShell and Azure DevOps](https://www.awshole.com/2019/11/08/manage-network-security-groups-with-powershell-and-azure-devops/)
+- [Create a Network Security Group (NSG) with PowerShell in Azure and assign it to an existing subnet!](https://techcommunity.microsoft.com/t5/azure-networking/create-a-network-security-group-nsg-with-powershell-in-azure-and/m-p/1936046)
+
 
 Instructions
 1. Log onto the UCIBOX desktop using the vagrant account
