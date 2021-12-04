@@ -43,7 +43,7 @@ function getParameters() {
     curl -o /tmp/${filename} ${GITHUB_ROOT}templates/${filename}
     #jq -s '.[0] * .[1]' /tmp/${filename} /tmp/RedTeam_parameters.json > /tmp/combined.json
     cat /tmp/RedTeam_parameters.json | jq '. | {parameters}' > /tmp/red2.json
-    jq -s '.[0] * .[1]' /tmp/${filename} /tmp/red2.json > /tmp/combined.json
+    jq -s '.[0] * .[1]' /tmp/red2.json /tmp/${filename} > /tmp/combined.json
 }
 
 function iex() {
