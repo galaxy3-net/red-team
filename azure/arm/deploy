@@ -41,6 +41,7 @@ function day1() {
 function getParameters() {
     export filename="${1}_parameters.json"
     curl -o /tmp/${filename} ${GITHUB_ROOT}templates/${filename}
+    jq -s '.[0] * .[1]' /tmp/RedTeam_parameters.json /tmp/${filename} > /tmp/combined.json
 }
 
 function iex() {
