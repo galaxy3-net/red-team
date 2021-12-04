@@ -1,5 +1,8 @@
 #!/bin/bash
 
+export PUBLIC_IP=$(dig +short myip.opendns.com @resolver1.opendns.com)
+export PUBLIC_KEY=$(cat ~/.ssh/jumpbox.pub)
+
 export GITHUB_ROOT='https://raw.githubusercontent.com/galaxy3-net/red-team/krk/azure/arm/'
 
 function authenticate () {
@@ -42,6 +45,10 @@ function refresh() {
 
 function setup() {
     bash -c "$(curl -s ${GITHUB_ROOT}setup)"
+}
+
+function stub() {
+    pwsh -Command "iwr ${GITHUB_ROOT}redteamsg.ps1 | iex ${PUBLIC_IP}"
 }
 case "${1}" in
 
@@ -87,6 +94,11 @@ case "${1}" in
 
   setup)
     setup
+    exit 0
+    ;;
+
+  stub)
+    stub
     exit 0
     ;;
 
