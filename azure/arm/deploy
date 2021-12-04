@@ -10,6 +10,16 @@ function authenticate () {
   bash -c "$(curl -s ${GITHUB_ROOT}authenticate)"
 }
 
+function createJSONTEmplateFile() {
+    cat <<_EOD_ > /tmp/ReadTeam_parameters.json
+{
+  "PUBLIC_IP": "${PUBLIC_IP}/32",
+  "PUBLIC_KEY": "${PUBLIC_KEY}"
+  "adminPublicKey1": "${PUBLIC_KEY}"
+}
+_EOD_
+
+}
 function day1() {
     iex redteam
     iex redteamsg
