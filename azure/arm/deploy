@@ -40,7 +40,7 @@ function day1() {
 
 function getParameters() {
     export filename="${1}_parameters.json"
-    curl -o /tmp/${filename} ${GITHUB_ROOT}/${filename}
+    curl -o /tmp/${filename} ${GITHUB_ROOT}templates/${filename}
 }
 
 function iex() {
