@@ -52,7 +52,7 @@ function stub() {
     export URL="${GITHUB_ROOT}stub"
 
     export ARGS="aaa"
-    pwsh "\$PUBLIC_IP=${PUBLIC_IP}}; iwr ${URL}) | iex"
+    pwsh -Command "\$PUBLIC_IP=${PUBLIC_IP}}; iwr ${URL}) | iex"
 }
 case "${1}" in
 
