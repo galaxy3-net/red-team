@@ -10,35 +10,36 @@ function authenticate () {
 }
 
 function day1() {
-    redteam
-    redteamsg
-    nsgrules
-    net1
-    jumpbox
+    iex redteam
+    iex redteamsg
+    iex nsgrules
+    iex net1
+    iex jumpbox
 }
 
 function iex() {
     pwsh -Command "iwr ${GITHUB_ROOT}${1}.ps1 | iex"
+    #pwsh -Command "\$PUBLIC_IP=\"${PUBLIC_IP}\" ; \$Command = iwr ${URL} ; iex \$Command"
 }
-function jumpbox() {
-    pwsh -Command "iwr ${GITHUB_ROOT}jumpbox.ps1 | iex"
-}
+#unction jumpbox() {
+#    pwsh -Command "iwr ${GITHUB_ROOT}jumpbox.ps1 | iex"
+#}
 
-function net1() {
-    pwsh -Command "iwr ${GITHUB_ROOT}net1.ps1 | iex"
-}
+#function net1() {
+#    pwsh -Command "iwr ${GITHUB_ROOT}net1.ps1 | iex"
+#}
 
-function nsgrules() {
-    pwsh -Command "iwr ${GITHUB_ROOT}nsgrules.ps1 | iex"
-}
+#function nsgrules() {
+#    pwsh -Command "iwr ${GITHUB_ROOT}nsgrules.ps1 | iex"
+#}
 
-function redteam() {
-    pwsh -Command "iwr ${GITHUB_ROOT}resource_group.ps1 -UseBasicParsing | iex"
-}
+#function redteam() {
+#    pwsh -Command "iwr ${GITHUB_ROOT}resource_group.ps1 -UseBasicParsing | iex"
+#}
 
-function redteamsg() {
-    pwsh -Command "iwr ${GITHUB_ROOT}redteamsg.ps1 | iex"
-}
+#function redteamsg() {
+#    pwsh -Command "iwr ${GITHUB_ROOT}redteamsg.ps1 | iex"
+#}
 
 function refresh() {
     [ -e ./deploy ] && rm ./deploy
@@ -50,15 +51,12 @@ function setup() {
     bash -c "$(curl -s ${GITHUB_ROOT}setup)"
 }
 
-function stub() {
-    export URL="${GITHUB_ROOT}stub.ps1"
-    #pwsh -Command "\$PUBLIC_IP=\"${PUBLIC_IP}\" ; \$Command = iwr ${URL} ; iex \$Command"
-    pwsh -Command "iwr ${GITHUB_ROOT}stub.ps1 -UseBasicParsing | iex"
-}
+#function stub() {
+#    export URL="${GITHUB_ROOT}stub.ps1"
+#    #pwsh -Command "\$PUBLIC_IP=\"${PUBLIC_IP}\" ; \$Command = iwr ${URL} ; iex \$Command"
+#    pwsh -Command "iwr ${GITHUB_ROOT}stub.ps1 -UseBasicParsing | iex"
+#}
 
-function get_url() {
-    kk
-}
 case "${1}" in
 
   authenticate)
@@ -71,28 +69,8 @@ case "${1}" in
     exit 0
     ;;
 
-  jumpbox)
-    jumpbox
-    exit 0
-    ;;
-
-  nsgrules)
-    nsgrules
-    exit 0
-    ;;
-
-  net1)
-    net1
-    exit 0
-    ;;
-
-  redteam)
-    redteam
-    exit 0
-    ;;
-
-  redteamsg)
-    redteamsg
+  jumpbox|net1|nsgrules|redteam|redteamsg|stub)
+    iex "${1}"
     exit 0
     ;;
 
@@ -103,11 +81,6 @@ case "${1}" in
 
   setup)
     setup
-    exit 0
-    ;;
-
-  stub)
-    iex stub
     exit 0
     ;;
 
