@@ -28,8 +28,14 @@ function day1() {
     iex jumpbox
 }
 
+function getParameters() {
+    export filename="${1}_parameters.json"
+    curl -o /tmp/${filename} ${GITHUB_ROOT}/${filename}
+}
+
 function iex() {
     export IEX_MODULE="${1}"
+    getParameters "${IEX_MODULE}"
     pwsh -Command "iwr ${GITHUB_ROOT}${1}.ps1 | iex"
     #pwsh -Command "\$PUBLIC_IP=\"${PUBLIC_IP}\" ; \$Command = iwr ${URL} ; iex \$Command"
 }
