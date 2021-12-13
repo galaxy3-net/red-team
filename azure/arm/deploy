@@ -1,0 +1,102 @@
+#!/bin/bash
+
+export PUBLIC_IP=$(dig +short myip.opendns.com @resolver1.opendns.com)
+export PUBLIC_KEY=$(cat ~/.ssh/jumpbox.pub)
+export ResourceGroupName="RedTeam"
+
+export GITHUB_ROOT='https://raw.githubusercontent.com/galaxy3-net/red-team/krk/azure/arm/'
+
+function authenticate () {
+  bash -c "$(curl -s ${GITHUB_ROOT}authenticate)"
+}
+
+function createJSONTEmplateFile() {
+  # BUCKET_NAME=testbucket
+  # OBJECT_NAME=testworkflow-2.0.1.jar
+  # TARGET_LOCATION=/opt/test/testworkflow-2.0.1.jar
+
+  JSON_STRING=$( jq -n \
+                  --arg ip "$PUBLIC_IP/32" \
+                  --arg key "$PUBLIC_KEY" \
+                  --arg key1 "$PUBLIC_KEY" \
+                  '{"PUBLIC_IP": $ip, "PUBLIC_KEY": $key, "adminPublicKey1": $key1}' )
+  echo "${JSON_STRING}" > /tmp/RedTeam_parameters.json
+#    cat <<_EOD_ > /tmp/RedTeam_parameters.json
+#{
+#  "PUBLIC_IP": "${PUBLIC_IP}/32",
+#  "PUBLIC_KEY": "${PUBLIC_KEY}",
+#  "adminPublicKey1": "${PUBLIC_KEY}"
+#}
+#_EOD_
+# cat /tmp/RedTeam_parameters.json | jq '[.] | {parameters: .}' > /tmp/red2.json
+}
+function day1() {
+    iex redteam
+    iex redteamsg
+    iex nsgrules
+    iex net1
+    iex jumpbox
+}
+
+function getParameters() {
+    export filename="${1}_parameters.json"
+    curl -o /tmp/${filename} ${GITHUB_ROOT}templates/${filename}
+    #jq -s '.[0] * .[1]' /tmp/${filename} /tmp/RedTeam_parameters.json > /tmp/combined.json
+
+    cat /tmp/${filename} | jq  --arg PUBLIC_IP "${PUBLIC_IP}" --arg PUBLIC_KEY "${PUBLIC_KEY}" -s \
+      '.parameters.adminPublicKey.value=[$PUBLIC_KEY] |  \
+       .parameters.adminPublicKey.value=[$PUBLIC_KEY]' \
+        > /tmp/combined.json
+}
+
+function iex() {
+    export IEX_MODULE="${1}"
+    getParameters "${IEX_MODULE}"
+    pwsh -Command "iwr ${GITHUB_ROOT}${1}.ps1 | iex"
+    #pwsh -Command "\$PUBLIC_IP=\"${PUBLIC_IP}\" ; \$Command = iwr ${URL} ; iex \$Command"
+}
+
+function refresh() {
+    [ -e ./deploy ] && rm ./deploy
+    wget --no-cache ${GITHUB_ROOT}deploy
+    chmod u+x ./deploy
+}
+
+function setup() {
+    bash -c "$(curl -s ${GITHUB_ROOT}setup)"
+}
+
+createJSONTEmplateFile
+
+case "${1}" in
+
+  authenticate)
+    authenticate
+    exit 0
+    ;;
+
+  day1)
+    day1
+    exit 0
+    ;;
+
+  jumpbox|net1|nsgrules|redteam|redteamsg|stub)
+    iex "${1}"
+    exit 0
+    ;;
+
+  refresh)
+    refresh
+    exit 0
+    ;;
+
+  setup)
+    setup
+    exit 0
+    ;;
+
+  *) echo "${1} is not a valid subcommand"
+    exit 1
+    ;;
+esac
+

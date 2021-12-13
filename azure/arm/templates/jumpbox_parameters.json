@@ -1,0 +1,60 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "value": "eastus"
+        },
+        "networkInterfaceName": {
+            "value": "jumpboxprovisioner628"
+        },
+        "networkSecurityGroupId": {
+            "value": "/subscriptions/e5a719d9-f37f-4389-9ecb-edd489e79fda/resourceGroups/RedTeam/providers/Microsoft.Network/networkSecurityGroups/RedTeamSG"
+        },
+        "subnetName": {
+            "value": "default"
+        },
+        "virtualNetworkId": {
+            "value": "/subscriptions/e5a719d9-f37f-4389-9ecb-edd489e79fda/resourceGroups/RedTeam/providers/Microsoft.Network/virtualNetworks/Net1"
+        },
+        "publicIpAddressName": {
+            "value": "JumpBoxProvisioner-ip"
+        },
+        "publicIpAddressType": {
+            "value": "Dynamic"
+        },
+        "publicIpAddressSku": {
+            "value": "Basic"
+        },
+        "pipDeleteOption": {
+            "value": "Detach"
+        },
+        "virtualMachineName": {
+            "value": "JumpBoxProvisioner"
+        },
+        "virtualMachineComputerName": {
+            "value": "JumpBoxProvisioner"
+        },
+        "virtualMachineRG": {
+            "value": "RedTeam"
+        },
+        "osDiskType": {
+            "value": "Premium_LRS"
+        },
+        "osDiskDeleteOption": {
+            "value": "Delete"
+        },
+        "virtualMachineSize": {
+            "value": "Standard_B1s"
+        },
+        "nicDeleteOption": {
+            "value": "Detach"
+        },
+        "adminUsername": {
+            "value": "azureuser"
+        },
+        "adminPublicKey": {
+            "value": "[En]"
+        }
+    }
+}
