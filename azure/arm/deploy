@@ -42,8 +42,11 @@ function getParameters() {
     export filename="${1}_parameters.json"
     curl -o /tmp/${filename} ${GITHUB_ROOT}templates/${filename}
     #jq -s '.[0] * .[1]' /tmp/${filename} /tmp/RedTeam_parameters.json > /tmp/combined.json
-    cat /tmp/RedTeam_parameters.json | jq '. | {parameters}' > /tmp/red2.json
-    jq -s '.[0] * .[1]' /tmp/red2.json /tmp/${filename} > /tmp/combined.json
+
+    cat /tmp/${filename} | jq  --arg PUBLIC_IP "${PUBLIC_IP}" --arg PUBLIC_KEY "${PUBLIC_KEY}" -s \
+      '.parameters.adminPublicKey.value=[$PUBLIC_KEY] |  \
+       .parameters.adminPublicKey.value=[$PUBLIC_KEY]' \
+        > /tmp/combined.json
 }
 
 function iex() {
