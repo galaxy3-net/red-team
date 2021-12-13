@@ -29,6 +29,7 @@ jobs:
       nginxdir: ./TF/nginx
 
     steps:
-    - uses: hashicorp/setup-terraform@v1
-      - run: echo "🍏 This job's status is ${{ job.status }}."
+      - name: Setup Hashicorp Terraform
+        uses: hashicorp/setup-terraform@v1
+        run: echo "🍏 This job's status is ${{ job.status }}."
 
