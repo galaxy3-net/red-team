@@ -15,3 +15,18 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
+
+  terraform:
+    name: 'Main (Prod) Branch Pre-Check'
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./azure/terraform
+    env:
+      version: 0.0.4
+      terraform_version: 0.14.9
+      eksdir: ./TF/EKS/
+      nginxdir: ./TF/nginx
+
+    steps:
+    - uses: hashicorp/setup-terraform@v1
